@@ -1,0 +1,84 @@
+
+
+/* CUSTOM CLASSES */
+.container {
+    padding: 2rem;
+    margin-top: 2rem;
+    box-shadow: 0 5px 16px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.headingContainer {
+    text-align: center;
+    line-height: normal;
+}
+
+.heading {
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 2.5rem;
+}
+
+.helperText {
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 0.9rem;
+    color: #333;
+}
+
+
+
+.icon {
+    cursor: pointer;
+}
+
+.link {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 0.9rem;
+    color: #333;
+    text-align: end;
+}
+
+.submitButton {
+    padding: 0.8rem;
+    font-size: large;
+    background-color: #333;
+    color: white;
+    border: 0px solid #ccc;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    box-shadow: 0 5px 16px rgba(0, 0, 0, 0.1);
+}
+
+.submitButton:hover {
+    background-color: #555;
+}
+
+.submitButton:focus {
+    outline: none;
+}
+
+.bodyText {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 0.9rem;
+    color: #333;
+    text-align: center;
+}
+
+.errorContainer {
+    line-height: 5px;
+}
+
+.error {
+    color: red;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
