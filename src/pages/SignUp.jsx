@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // React
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -19,6 +20,9 @@ import {
   Visibility,
   VisibilityOff,
 } from "@mui/icons-material";
+
+// Services
+import { signUp } from "../lib/services";
 
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -80,25 +84,21 @@ const SignUp = () => {
 
     const formErrors = validateForm();
     if (Object.keys(formErrors).length === 0) {
-      try {
-        const response = await fetch(
-          `${import.meta.env.VITE_API_BASE_URL}:8080/api/auth/signup`,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(formData),
-          }
-        );
-        const data = await response.json();
-        console.log(data);
-      } catch (error) {
-        console.log(error);
-        setErrors({ general: "An error occurred. Please try again later" });
-      } finally {
-        setLoading(false);
+      const { confirmPassword, ...data } = formData;
+      const response = await signUp(data);
+      if (response.error) {
+        setErrors({ general: response.message });
+      } else {
+        setErrors({});
+        setFormData({
+          name: "",
+          email: "",
+          password: "",
+          confirmPassword: "",
+          inviteCode: "",
+        });
       }
+      setLoading(false);
     } else {
       setLoading(false);
     }

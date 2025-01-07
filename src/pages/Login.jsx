@@ -7,6 +7,9 @@ import styles from "./Login.module.css";
 import { Email, Lock, Visibility, VisibilityOff } from "@mui/icons-material";
 import CustomInput from "../components/CustomInput";
 
+// Services
+import { login } from "../lib/services";
+
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
 
@@ -49,28 +52,16 @@ const Login = () => {
 
     if (Object.keys(errors).length === 0) {
       console.log(formData);
-      try {
-        setLoading(true);
-        // API Call
-        const res = fetch(
-          `${import.meta.env.VITE_API_BASE_URL}:8080/api/auth/login`,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(formData),
-          }
-        );
-        const data = await res.json();
-
-        console.log(data);
-        setLoading(false);
-      } catch (error) {
-        console.log(error);
-        setErrors({ general: "An error occurred. Please try again." });
-        setLoading(false);
-      }
+      setLoading(true);
+      await login(formData)
+        .then((res) => {
+          console.log(res);
+          setLoading(false);
+        })
+        .catch((error) => {
+          console.log(error);
+          errors.general = "Something went wrong. Please try again later.";
+        });
     } else {
       setErrors(errors);
     }
