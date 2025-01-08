@@ -26,6 +26,12 @@ Before setting up the project, ensure you have the following installed on your s
    cd Biztel.ai-React-Assignment
    ```
 
+   3. **Create .env file and add the following:**
+
+   ```bash
+   VITE_API_BASE_URL=<your_api_base_url>
+   ```
+
 3. **Install dependencies:**
 
    ```bash
